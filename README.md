@@ -1,7 +1,7 @@
 inotify-watch
 =============
 
-little script for executing a command whenever inotify event `CLOSE_WRITE` fires (i.e. when you save file in editor).
+little script for executing a command whenever inotify event `CLOSE_WRITE` fires for a single file (i.e. when you save the file in editor).
 
 - based on inotify-tools (and transitively on inotify, of course).
 - not to be confused with inotifywatch (part of inotify-tools) which logs inotify events (but does not behave like the `watch` utility at all - rather unfortunate naming in my opinion ..).
