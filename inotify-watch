@@ -1,0 +1,19 @@
+#!/bin/bash
+
+USAGE="Usage: $0 FILE COMMAND.."
+
+if [ $# -lt 2 ]; then
+	echo "$USAGE"
+	exit 1
+fi
+
+FILE=$1
+
+shift
+
+while
+  inotifywait -e CLOSE_WRITE $FILE &> /dev/null
+do
+  echo "`date +%T`" ">" "$*"
+  $*
+done
