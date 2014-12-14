@@ -11,9 +11,21 @@ FILE=$1
 
 shift
 
+CMDSTR="$*"
+CMD=$*
+
+function runCmd {
+  echo "`date +%T`" ">" $CMDSTR
+  $CMD
+}
+
+# run the command once at start
+runCmd
+
+# and each time the inotify event triggers
 while
   inotifywait -e CLOSE_WRITE $FILE &> /dev/null
 do
-  echo "`date +%T`" ">" "$*"
-  $*
+  runCmd
 done
+
